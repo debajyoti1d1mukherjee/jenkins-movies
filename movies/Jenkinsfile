@@ -76,12 +76,14 @@ pipeline {
                 script {
                     openshift.withCluster() {
                       openshift.withProject(env.DEV_PROJECT) {
+                        echo '###Selecting jar#####'  
                         openshift.selector("bc", "${APP_NAME}").startBuild("--from-file=${APP_NAME}/target/${APP_NAME}-1.0.0.jar", "--wait=true", "--follow=true")
+                        echo '###Selecting jar done#####'  
                       }
                     }
                 }
                 sh '''
-                        oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT}
+                        oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT} ${APP_GIT_URL} --strategy = source
                         oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
