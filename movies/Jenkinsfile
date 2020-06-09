@@ -57,10 +57,42 @@ pipeline {
                 echo '### Creating fat JAR ###'
                 sh '''
                         cd ${APP_NAME}
-                        mvn clean package -DskipTests=true
+                        mvn install -DskipTests=true
                    '''
             }
         }
+
+        stage('Create Image Builder') {
+
+      when {
+
+        expression {
+
+          openshift.withCluster() {
+
+            return !openshift.selector("bc", "movies").exists();
+
+          }
+
+        }
+
+      }
+
+      steps {
+
+        script {
+
+          openshift.withCluster() {
+
+            openshift.newBuild("--name=movies", "--image-stream=redhat-openjdk18-openshift:1.1", "--binary")
+
+          }
+
+        }
+
+      }
+
+    }
 
         stage('Launch new app in DEV env') {
             steps {
