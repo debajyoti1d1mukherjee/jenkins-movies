@@ -8,7 +8,7 @@
         "source": {
             "type": "Git",
             "git": {
-                "uri": "https://github.com/youruser/DO288-apps",
+                "uri": "ttps://github.com/debajyoti1d1mukherjee/jenkins-movies.git",
                 "ref": "review-cicd"
             },
             "contextDir": "movies"

@@ -10,9 +10,9 @@ pipeline {
     }
 
     environment {
-        DEV_PROJECT = "youruser-movies-dev"
+        DEV_PROJECT = "jenkins-build-poc"
         STAGE_PROJECT = "youruser-movies-stage"
-        APP_GIT_URL = "https://github.com/youruser/DO288-apps"
+        APP_GIT_URL = "https://github.com/debajyoti1d1mukherjee/jenkins-movies.git"
         NEXUS_SERVER = "http://nexus-common.apps.cluster.domain.example.com/repository/java"
 
         // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
@@ -27,7 +27,7 @@ pipeline {
                 echo '### Checking for compile errors ###'
                 sh '''
                         cd ${APP_NAME}
-                        mvn -s settings.xml -B clean compile
+                        mvn clean 
                    '''
             }
         }
@@ -37,12 +37,12 @@ pipeline {
                 echo '### Running unit tests ###'
                 sh '''
                         cd ${APP_NAME}
-                        mvn -s settings.xml -B clean test
+                        mvn  clean test 
                    '''
             }
         }
 
-        stage('Static Code Analysis') {
+        /*stage('Static Code Analysis') {
             steps {
                 echo '### Running pmd on code ###'
                 sh '''
@@ -50,14 +50,14 @@ pipeline {
                         mvn -s settings.xml -B clean pmd:check
                    '''
             }
-        }
+        }*/
 
         stage('Create fat JAR') {
             steps {
                 echo '### Creating fat JAR ###'
                 sh '''
                         cd ${APP_NAME}
-                        mvn -s settings.xml -B clean package -DskipTests=true
+                        mvn clean package -DskipTests=true
                    '''
             }
         }
@@ -101,7 +101,7 @@ pipeline {
             }
         }
 
-        stage('Promote to Staging Env') {
+        /*stage('Promote to Staging Env') {
             steps {
                 timeout(time: 60, unit: 'MINUTES') {
                     input message: "Promote to Staging?"
@@ -150,6 +150,6 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
 }
