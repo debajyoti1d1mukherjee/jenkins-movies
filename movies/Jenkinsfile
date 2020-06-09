@@ -12,7 +12,7 @@ pipeline {
     environment {
         DEV_PROJECT = "jenkins-build-poc"
         STAGE_PROJECT = "youruser-movies-stage"
-        APP_GIT_URL = "https://github.com/debajyoti1d1mukherjee/jenkins-movies.git"
+        APP_GIT_URL = "https://github.com/debajyoti1d1mukherjee/jenkins-movies"
         NEXUS_SERVER = "http://nexus-common.apps.cluster.domain.example.com/repository/java"
 
         // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
