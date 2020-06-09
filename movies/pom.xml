@@ -69,6 +69,7 @@
 			<url>https://maven.repository.redhat.com/ga/</url>
 		</pluginRepository>
 	</pluginRepositories>
+	
 
 	<profiles>
 		<profile>
@@ -116,11 +117,22 @@
 		</profile>
 	</profiles>
 
-	<!-- <build> <finalName>movies</finalName> <plugins> <plugin> <groupId>org.springframework.boot</groupId> 
-		<artifactId>spring-boot-maven-plugin</artifactId> </plugin> <plugin> <groupId>org.apache.maven.plugins</groupId> 
-		<artifactId>maven-pmd-plugin</artifactId> <version>3.12.0</version> <configuration> 
-		<rulesets> <ruleset>/category/java/bestpractices.xml</ruleset> </rulesets> 
-		<failOnViolation>true</failOnViolation> <printFailingErrors>true</printFailingErrors> 
-		</configuration> </plugin> </plugins> </build> -->
+	<build>
+	<plugins>
+		<plugin>
+			<!-- Build an executable JAR -->
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.4</version>
+			<configuration>
+				<archive>
+					<manifest>
+						<mainClass>com.redhat.movies.MoviesApplication</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
 
 </project>
