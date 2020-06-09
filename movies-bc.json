@@ -9,7 +9,7 @@
             "type": "Git",
             "git": {
                 "uri": "https://github.com/debajyoti1d1mukherjee/jenkins-movies",
-                "ref": "movies-pipeline"
+                "ref": "review-cicd"
             },
             "contextDir": "movies"
         },
