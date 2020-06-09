@@ -62,37 +62,7 @@ pipeline {
             }
         }
 
-        stage('Create Image Builder') {
-
-      when {
-
-        expression {
-
-          openshift.withCluster() {
-
-            return !openshift.selector("bc", "movies").exists();
-
-          }
-
-        }
-
-      }
-
-      steps {
-
-        script {
-
-          openshift.withCluster() {
-
-            openshift.newBuild("--name=movies", "--image-stream=redhat-openjdk-18/openjdk18-openshift:latest", "--binary")
-
-          }
-
-        }
-
-      }
-
-    }
+      
 
         stage('Launch new app in DEV env') {
             steps {
@@ -101,7 +71,7 @@ pipeline {
                         oc delete all -l app=${APP_NAME} -n ${DEV_PROJECT}
                         oc delete all -l build=${APP_NAME} -n ${DEV_PROJECT}
                         sleep 5
-                        oc new-build java:8 --name=${APP_NAME} --binary=true -n ${DEV_PROJECT}
+                        oc new-build openjdk18:latest --name=${APP_NAME} --binary=true -n ${DEV_PROJECT}
                    '''
 
                 echo '### Creating a new app in DEV env ###'
