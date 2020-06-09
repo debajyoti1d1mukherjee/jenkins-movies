@@ -85,7 +85,7 @@ pipeline {
                     }
                 }
                 sh '''
-                        oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT} ${APP_GIT_URL} --strategy = source
+                        oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT} 
                         oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
