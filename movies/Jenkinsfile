@@ -57,7 +57,7 @@ pipeline {
                 echo '### Creating fat JAR ###'
                 sh '''
                         cd ${APP_NAME}
-                        mvn package -DskipTests=true
+                        mvn clean install -DskipTests=true
                    '''
             }
         }
