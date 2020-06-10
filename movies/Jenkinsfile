@@ -68,6 +68,7 @@ pipeline {
             steps {
                 echo '### Cleaning existing resources in DEV env ###'
                 sh '''
+                        oc get all -n ${DEV_PROJECT}
                         oc delete all -l app=${APP_NAME} -n ${DEV_PROJECT}
                         oc get all -n ${DEV_PROJECT}
                         oc delete all -l build=${APP_NAME} -n ${DEV_PROJECT}
