@@ -19,7 +19,7 @@ public class MoviesController {
 
         //Generate fake static data
         movies = new ArrayList<Movie>();
-        movies.add(new Movie(1,"The Godfather","Crime/Thriller/Drama"));
+        movies.add(new Movie(1,"The Godfather","Crime/Thriller"));
         movies.add(new Movie(2,"Star Wars","Sci-Fi"));
         movies.add(new Movie(3,"The Mask","Comedy"));
         movies.add(new Movie(4,"Die Hard","Action"));
