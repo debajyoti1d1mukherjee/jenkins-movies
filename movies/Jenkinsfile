@@ -70,6 +70,7 @@ pipeline {
                 sh '''
                         oc get all -n ${DEV_PROJECT}
                         oc delete all -l app=${APP_NAME} -n ${DEV_PROJECT}
+                        oc delete bc/${APP_NAME} -n ${DEV_PROJECT}
                         oc get all -n ${DEV_PROJECT}
                         oc delete all -l build=${APP_NAME} -n ${DEV_PROJECT}
                         sleep 5
