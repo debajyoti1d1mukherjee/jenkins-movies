@@ -13,7 +13,8 @@
 	<artifactId>movies</artifactId>
 	<version>1.0.0</version>
 	<name>movies</name>
-	<description>Demo project for Spring Boot</description>
+	<packaging>jar</packaging>
+	<description>Movies project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
