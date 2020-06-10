@@ -25,6 +25,7 @@ public class MoviesController {
         movies.add(new Movie(4,"Die Hard","Action"));
         movies.add(new Movie(5,"The Exorcist","Horror"));
         movies.add(new Movie(6,"The Silence of the Lambs","Drama"));
+        movies.add(new Movie(7,"Taken","Action"));
 
         return movies;
     }
