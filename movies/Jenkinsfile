@@ -81,15 +81,15 @@ pipeline {
                 script {
                     openshift.withCluster() {
                       openshift.withProject(env.DEV_PROJECT) {
-                        //echo '###Selecting jar###)))##  pain starts'  
-                        //openshift.selector("bc", "${APP_NAME}").startBuild("--from-file=${APP_NAME}/target/${APP_NAME}-1.0.0.jar", "--wait=true", "--follow=true")
-                        //echo '###Selecting jar done##)))))###--hey n pain'  
+                        echo '###Selecting jar###)))##  pain starts from here'  
+                        openshift.selector("bc", "${APP_NAME}").startBuild("--from-file=${APP_NAME}/target/${APP_NAME}-1.0.0.jar", "--wait=true", "--follow=true")
+                        echo '###Selecting jar done##)))))###--hey n pain'  
                         
                       }
                     }
                 }
                 sh '''
-                        oc new-app --name ${APP_NAME} -n ${DEV_PROJECT} openjdk18:latest~https://github.com/debajyoti1d1mukherjee/jenkins-movies.git
+                        oc new-app --name ${APP_NAME} -n ${DEV_PROJECT}
                         oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
