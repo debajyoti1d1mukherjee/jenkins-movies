@@ -89,7 +89,7 @@ pipeline {
                     }
                 }
                 sh '''
-                        oc new-app --name ${APP_NAME} -n ${DEV_PROJECT}
+                        oc new-app ${APP_NAME}:latest -n ${DEV_PROJECT}
                         oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
