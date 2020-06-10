@@ -86,7 +86,7 @@ pipeline {
                     }
                 }
                 sh '''
-                        oc new-app --name ${APP_NAME} -n ${DEV_PROJECT} debajmuk-movies-dev/movies:latest~https://github.com/debajyoti1d1mukherjee/jenkins-movies.git
+                        oc new-app --name ${APP_NAME} -n ${DEV_PROJECT} debajmuk-movies-dev/movies~https://github.com/debajyoti1d1mukherjee/jenkins-movies.git
                         oc expose svc/${APP_NAME} -n ${DEV_PROJECT}
                    '''
             }
