@@ -107,7 +107,7 @@
 		</profile>
 	</profiles>
 
-	<build>
+	<!-- <build>
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
@@ -123,5 +123,21 @@
 		</plugin>
 	</plugins>
 </build>
+ -->
+ 	<build>
+	<resources>
+        <resource>
+            <directory>src/main/resources</directory>
+            <filtering>true</filtering>
+        </resource>
+    </resources>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+		<finalName>movies</finalName>
+	</build>
 
 </project>
