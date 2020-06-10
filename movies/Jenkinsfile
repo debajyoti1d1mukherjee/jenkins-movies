@@ -24,7 +24,7 @@ pipeline {
 
         stage('Compilation Check') {
             steps {
-                echo '### Checking for compile errors ###'
+                echo '### Checking for compile errors #######'
                 sh '''
                         cd ${APP_NAME}
                         mvn clean compile
